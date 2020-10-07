@@ -17,7 +17,6 @@ public class User {
     @Column
     private String name;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 

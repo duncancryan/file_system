@@ -18,7 +18,6 @@ public class Folder {
     @Column
     private String title;
 
-    @JsonBackReference
     @OneToMany(mappedBy = "folder")
     private List<File> files;
 

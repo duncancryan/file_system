@@ -15,17 +15,17 @@ public class FolderController {
     @Autowired
     FolderRepository folderRepository;
 
-    @GetMapping(value = "/folders")
+    @GetMapping("/folders")
     public ResponseEntity<List<Folder>> getAllFolders(){
         return new ResponseEntity<>(folderRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/folders/{id}")
+    @GetMapping("/folders/{id}")
     public ResponseEntity getFolder(@PathVariable Long id){
         return new ResponseEntity(folderRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/folders")
+    @PostMapping("/folders")
     public  ResponseEntity<Folder> postFolder(@RequestBody Folder folder){
         folderRepository.save(folder);
         return new ResponseEntity<>(folder, HttpStatus.CREATED);

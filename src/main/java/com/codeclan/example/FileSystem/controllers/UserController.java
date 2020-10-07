@@ -15,19 +15,19 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
-    @GetMapping(value = "/users")
+    @GetMapping("/users")
     public ResponseEntity<List<User>> getAllUsers(){
         return new ResponseEntity<>(userRepository.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping(value = "/users/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity getUser(@PathVariable Long id){
         return new ResponseEntity(userRepository.findById(id), HttpStatus.OK);
     }
 
-    @PostMapping(value = "/users")
-    public ResponseEntity<User> postUser(@RequestBody User user){
+    @PostMapping("/users")
+    public ResponseEntity postUser(@RequestBody User user){
         userRepository.save(user);
-        return new ResponseEntity<>(user, HttpStatus.CREATED);
+        return new ResponseEntity(user, HttpStatus.CREATED);
     }
 }
