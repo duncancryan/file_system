@@ -28,46 +28,41 @@ public class DataLoader implements ApplicationRunner {
     }
     public void run(ApplicationArguments args){
         User duncan = new User("Duncan");
+        userRepository.save(duncan);
 
         User phil = new User("Phil");
+        userRepository.save(phil);
 
         Folder jobStuff = new Folder("Job Stuff", duncan);
+        duncan.addFolder(jobStuff);
+        folderRepository.save(jobStuff);
 
         Folder music = new Folder("Music", phil);
+        phil.addFolder(music);
+        folderRepository.save(music);
 
         Folder investing = new Folder("Investing", duncan);
+        duncan.addFolder(investing);
+        folderRepository.save(investing);
 
         File cV = new File("Curriculum Vitae", ".pdf", jobStuff);
+        jobStuff.addFile(cV);
         fileRepository.save(cV);
 
         File coverLetter = new File("Cover Letter", ".docx", jobStuff);
+        jobStuff.addFile(coverLetter);
         fileRepository.save(coverLetter);
 
         File blue = new File("Blue", ".mp3", music);
+        music.addFile(blue);
         fileRepository.save(blue);
 
         File shares = new File("Shares", ".xlxs", investing);
+        investing.addFile(shares);
         fileRepository.save(shares);
 
         File quarterlyResults = new File("Quarterly Results", ".docx", investing);
-        fileRepository.save(quarterlyResults);
-
-        jobStuff.addFile(cV);
-        jobStuff.addFile(coverLetter);
-        folderRepository.save(jobStuff);
-
-        music.addFile(blue);
-        folderRepository.save(music);
-
-        investing.addFile(shares);
         investing.addFile(quarterlyResults);
-        folderRepository.save(investing);
-
-        phil.addFolder(music);
-        userRepository.save(phil);
-
-        duncan.addFolder(investing);
-        duncan.addFolder(jobStuff);
-        userRepository.save(duncan);
+        fileRepository.save(quarterlyResults);
     }
 }

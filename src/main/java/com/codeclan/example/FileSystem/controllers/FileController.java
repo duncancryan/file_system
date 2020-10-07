@@ -27,7 +27,7 @@ public class FileController {
     }
 
     @PostMapping(value = "/files")
-    public  ResponseEntity<File> postPirate(@RequestBody File file){
+    public  ResponseEntity<File> postFile(@RequestBody File file){
         fileRepository.save(file);
         return new ResponseEntity<>(file, HttpStatus.CREATED);
     }
