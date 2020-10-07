@@ -18,10 +18,12 @@ public class Folder {
     @Column
     private String title;
 
+//    can't have JsonBackReference on both sides, have it on ManyToOne side
+
+    @JsonBackReference
     @OneToMany(mappedBy = "folder")
     private List<File> files;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;

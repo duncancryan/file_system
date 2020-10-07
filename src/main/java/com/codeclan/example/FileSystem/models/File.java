@@ -18,7 +18,6 @@ public class File {
     @Column
     private String extension;
 
-    @JsonBackReference
     @ManyToOne
     @JoinColumn(name = "folder_id", nullable = false)
     private Folder folder;
